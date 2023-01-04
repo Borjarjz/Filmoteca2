@@ -4,32 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:visibility="visible"
-    tools:context=".MainActivity"
-    tools:visibility="visible">
+    tools:context=".listapelis">
 
     <Button
-        android:id="@+id/botonconectBBDD"
+        android:id="@+id/botonverlistapelis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="72dp"
-        android:onClick="irActivityConcexionbbdd"
-        android:text="conectarse a BBDD"
+        android:layout_marginBottom="68dp"
+        android:text="Ver lista de peliculas"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/imagenfilmoteca"
-        android:layout_width="243dp"
-        android:layout_height="309dp"
-        android:layout_marginBottom="108dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/botonconectBBDD"
+    <TextView
+        android:id="@+id/textoconexionbbdd"
+        android:layout_width="289dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="160dp"
+        android:text="Conectado a BBDD"
+        android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.639"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/logo400x400"
-        tools:visibility="visible" />
-
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
