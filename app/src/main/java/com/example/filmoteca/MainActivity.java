@@ -38,6 +38,12 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,"ha pulsado borrar",Toast.LENGTH_SHORT).show();
                 return true;
 
+            case R.id.buscagoogle:
+                Toast.makeText(MainActivity.this,"ha pulsado buscar en google",Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.acercade:
+                Toast.makeText(MainActivity.this,"ha pulsado acerca de",Toast.LENGTH_SHORT).show();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

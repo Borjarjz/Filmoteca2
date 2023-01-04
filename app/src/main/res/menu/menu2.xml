@@ -13,4 +13,11 @@
 
     <item android:id="@+id/borrarpeli"
         android:title="@string/borrapeli" />
+
+    <item android:id="@+id/buscagoogle"
+        android:title="@string/buscagoogle" />
+
+
+    <item android:id="@+id/acercade"
+        android:title="@string/AcercaDe" />
 </menu>

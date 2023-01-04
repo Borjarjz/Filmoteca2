@@ -3,4 +3,6 @@
     <string name="idioma">Idioma</string>
     <string name="editpeli">Editar Pelicula</string>
     <string name="borrapeli">Borrar Pelicula</string>
+    <string name="AcercaDe">Acerca de</string>
+    <string name="buscagoogle">Buscar en Google</string>
 </resources>
