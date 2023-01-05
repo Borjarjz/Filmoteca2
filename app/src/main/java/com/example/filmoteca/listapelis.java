@@ -81,17 +81,7 @@ public class listapelis extends AppCompatActivity {
                 Toast.makeText(listapelis.this,"ha pulsado idioma",Toast.LENGTH_SHORT).show();
                 return true;
 
-            case R.id.editpeli:
-                Toast.makeText(listapelis.this,"ha pulsado editar",Toast.LENGTH_SHORT).show();
-                return true;
 
-            case R.id.borrarpeli:
-                Toast.makeText(listapelis.this,"ha pulsado borrar",Toast.LENGTH_SHORT).show();
-                return true;
-
-            case R.id.buscagoogle:
-                Toast.makeText(listapelis.this,"ha pulsado buscar en google",Toast.LENGTH_SHORT).show();
-                return true;
             case R.id.acercade:
                 Toast.makeText(listapelis.this,"ha pulsado acerca de",Toast.LENGTH_SHORT).show();
                 return true;
@@ -105,4 +95,9 @@ public class listapelis extends AppCompatActivity {
 
     }
 
+
+    public void irActivityVisor(View view){
+    Intent intent = new Intent(listapelis.this,visor.class);
+    startActivity(intent);
+    }
 }
