@@ -16,7 +16,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class listapelis extends AppCompatActivity {
+public class conectaaBBDD extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
 
@@ -46,12 +46,12 @@ public class listapelis extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             //Log.d(TAG, "signInAnonymously:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(listapelis.this, "Authentication sucessfull.",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(conectaaBBDD.this, "Authentication sucessfull.",Toast.LENGTH_SHORT).show();
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             //Log.w(TAG, "signInAnonymously:failure", task.getException());
-                            Toast.makeText(listapelis.this, "Authentication failed.",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(conectaaBBDD.this, "Authentication failed.",Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }
                     }
@@ -78,12 +78,12 @@ public class listapelis extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {//se hace el CASE para cada opción del menu
         switch(item.getItemId()){
             case R.id.idioma:
-                Toast.makeText(listapelis.this,"ha pulsado idioma",Toast.LENGTH_SHORT).show();
+                Toast.makeText(conectaaBBDD.this,"ha pulsado idioma",Toast.LENGTH_SHORT).show();
                 return true;
 
 
             case R.id.acercade:
-                Toast.makeText(listapelis.this,"ha pulsado acerca de",Toast.LENGTH_SHORT).show();
+                Toast.makeText(conectaaBBDD.this,"ha pulsado acerca de",Toast.LENGTH_SHORT).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -97,7 +97,16 @@ public class listapelis extends AppCompatActivity {
 
 
     public void irActivityVisor(View view){
-    Intent intent = new Intent(listapelis.this,visor.class);
+
+    Intent intent = new Intent(conectaaBBDD.this,PelisListView.class);
     startActivity(intent);
+
     }
+    public void seleccionarPeli(View view){
+        //hay que abrir la lista. seleccionar uno. guardarlo y pasarlo al siguiente intent
+
+        irActivityVisor(view);
+
+    }
+
 }

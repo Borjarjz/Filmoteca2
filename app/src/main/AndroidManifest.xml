@@ -13,27 +13,33 @@
         android:theme="@style/Theme.Filmoteca"
         tools:targetApi="31">
         <activity
-            android:name=".editor"
-            android:parentActivityName=".visor"
+            android:name=".PelisListView"
+            android:parentActivityName=".conectaaBBDD"
             android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".editor"
+            android:exported="false"
+            android:parentActivityName=".visor">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".visor"
-            android:parentActivityName=".listapelis"
-            android:exported="false">
-
+            android:exported="false"
+            android:parentActivityName=".PelisListView">
             <meta-data
                 android:name="android.app.lib_name"
-
                 android:value="" />
         </activity>
         <activity
-            android:name=".listapelis"
-            android:parentActivityName=".MainActivity"
-            android:exported="false">
+            android:name=".conectaaBBDD"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

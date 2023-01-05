@@ -5,17 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -63,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     }
 //hasta aqui se crea el menu
     public void irActivityConcexionbbdd(View view) {//método que lanzara la actividad siguiente con un intent
-        Intent intent = new Intent(MainActivity.this,listapelis.class);
+        Intent intent = new Intent(MainActivity.this, conectaaBBDD.class);
         startActivity(intent);
 
     }

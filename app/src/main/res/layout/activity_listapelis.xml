@@ -7,9 +7,9 @@
     android:layout_height="match_parent"
 
     android:transitionName="Conexion a BBDD"
-    tools:context=".listapelis">
+    tools:context=".conectaaBBDD">
 
-    
+
 
 
     <Button
@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="68dp"
-        android:onClick="irActivityVisor"
+        android:onClick="seleccionarPeli"
         android:text="Ver lista de peliculas"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
