@@ -1,44 +1,41 @@
 package com.example.filmoteca;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
+
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.AttributeSet;
+
 import android.view.Menu;
 import android.view.MenuItem;
+
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.ktx.Firebase;
 
-import java.net.HttpCookie;
 import java.util.ArrayList;
 
 public class PelisListView extends AppCompatActivity {
     private ListView listview;
-    private ArrayList<String> names;
+
+    private String pelipulsada=null;
 
     //database
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference raiz = database.getReference();
-
+    DatabaseReference raiz = database.getReference("PELICULAS");
+    final ArrayList<String> names = new ArrayList<>();
 
 
     @Override
@@ -46,12 +43,42 @@ public class PelisListView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pelis_list_view);
 
-        raiz.addValueEventListener(new ValueEventListener() {
+    Query query =raiz.orderByChild("Titulo");
+
+
+
+
+
+        query.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-               // String value = snapshot.getValue(String.class);
+                //String value = snapshot.getValue(String.class);
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String tit = snapshot.child("Titulo").getValue(String.class);
+                    names.add(tit);
+                }
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(PelisListView.this, android.R.layout.simple_list_item_1, names);
+                listview = (ListView) findViewById(R.id.listviewdepelis);
+                listview.setAdapter(adapter);
+                        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {//se crea el click listener de la listview
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                // Obtener el elemento pulsado
+                                String item = (String) parent.getItemAtPosition(position);
+                                Toast.makeText(PelisListView.this,"ha pulsado "+item,Toast.LENGTH_SHORT).show();
+                                pelipulsada=item;
+                                //se crea el intent con la nueva actividad y se le pasa la peliplsada para rescatar esos datos de la BBDD
+                                Intent intent = new Intent(PelisListView.this, visor.class);
+                                intent.putExtra("MESSAGE", pelipulsada);
+                                startActivity(intent);
+
+
+                            }
+                        });
+
+
 
 
             }
@@ -63,25 +90,18 @@ public class PelisListView extends AppCompatActivity {
             }
         });
 
-
-                //EMPIEZA LISTVIEW
+/*
+             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, names);
                 listview = (ListView) findViewById(R.id.listviewdepelis);
-
-
-                names = new ArrayList<String>();
-                names.add(raiz.child("peli1").child("Titulo").toString());
-                names.add(String.valueOf(raiz.child("peli2").child("Titulo")));
-                names.add(raiz.child("peli3").child("Titulo").get().toString());
-                names.add(raiz.child("peli4").get().toString());
-                names.add(raiz.child("peli5").toString());
-                names.add(raiz.child("peli6").child("Titulo").getKey());
-
-
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, names);
                 listview.setAdapter(adapter);
+*/
 
-                //fin listview
+
+
+
     }
+
+
 
     //esto es menu
 
@@ -92,6 +112,8 @@ public class PelisListView extends AppCompatActivity {
         // return super.onCreateOptionsMenu(menu);
 
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {//se hace el CASE para cada opción del menu
@@ -109,5 +131,9 @@ public class PelisListView extends AppCompatActivity {
         }
 
     }
+
+
+
+
 //hasta aqui se crea el menu
 }

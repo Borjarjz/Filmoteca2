@@ -13,10 +13,14 @@ import android.widget.Toast;
 public class visor extends AppCompatActivity {
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visor);
+        Intent intent = getIntent();
+        String pelipulsada = intent.getStringExtra("MESSAGE");
+        Toast.makeText(visor.this,"se pasa "+pelipulsada,Toast.LENGTH_SHORT).show();
     }
 
 
