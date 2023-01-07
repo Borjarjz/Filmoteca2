@@ -28,6 +28,21 @@ public class visor extends AppCompatActivity {
     String pelipulsada=null;
 
 
+    TextView tit;
+    TextView gen;
+    TextView sin;
+    TextView dir;
+    TextView vis;
+
+    String titulo;
+    String genero;
+    String sinopsis;
+    String director;
+    String vista;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,11 +59,11 @@ public class visor extends AppCompatActivity {
 
         setContentView(R.layout.activity_visor);
 
-        TextView tit=(TextView)findViewById(R.id.titulomostrar);
-        TextView gen=(TextView)findViewById(R.id.generomostrar);
-        TextView sin=(TextView)findViewById(R.id.sinopsismostrar);
-        TextView dir=(TextView)findViewById(R.id.directormostrar);
-        TextView vis=(TextView)findViewById(R.id.vistamostrar);
+        tit=(TextView)findViewById(R.id.titulomostrar);
+        gen=(TextView)findViewById(R.id.generomostrar);
+        sin=(TextView)findViewById(R.id.sinopsismostrar);
+        dir=(TextView)findViewById(R.id.directormostrar);
+        vis=(TextView)findViewById(R.id.vistamostrar);
 
 
         query.addValueEventListener(new ValueEventListener() {
@@ -63,10 +78,16 @@ public class visor extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
                     tit.setText(snapshot.child("Titulo").getValue(String.class));
+                    titulo=snapshot.child("Titulo").getValue(String.class);
+
                     gen.setText(snapshot.child("Genero").getValue(String.class));
+                    genero=snapshot.child("Genero").getValue(String.class);
                     sin.setText(snapshot.child("Sinopsis").getValue(String.class));
+                    sinopsis=snapshot.child("Sinopsis").getValue(String.class);
                     dir.setText(snapshot.child("Director").getValue(String.class));
+                    director=snapshot.child("Director").getValue(String.class);
                     vis.setText(snapshot.child("vista").getValue(Boolean.class).toString());
+                    vista=snapshot.child("vista").getValue(Boolean.class).toString();
 
                 }
 
@@ -132,7 +153,11 @@ public class visor extends AppCompatActivity {
 
     public void irActivityeditor() {//método que lanzara la actividad siguiente con un intent
         Intent intent2 = new Intent(visor.this,editor.class);
-        intent2.putExtra("MESSAGE", pelipulsada);
+        intent2.putExtra("TITULO", titulo);
+        intent2.putExtra("GENERO", genero);
+        intent2.putExtra("SINOPSIS", sinopsis);
+        intent2.putExtra("DIRECTOR", director);
+        intent2.putExtra("VISTA", vista);
         startActivity(intent2);
 
     }
