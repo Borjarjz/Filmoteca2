@@ -2,10 +2,12 @@ package com.example.filmoteca;
 
 import androidx.annotation.NonNull;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.app.SearchManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -125,7 +127,20 @@ public class PelisListView extends AppCompatActivity {
 
 
             case R.id.acercade:
-                Toast.makeText(PelisListView.this,"ha pulsado acerca de",Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Acerca de");
+                builder.setMessage("Esta aplicacion ha sido creada por Borja Rodriguez Para la asignatura prog dirigida por eventos");
+
+
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.create();
+                builder.show();
+
                 return true;
             case R.id.anyadirpeli:
                 Intent intent3 = new Intent(PelisListView.this,IntroducePeli.class);
