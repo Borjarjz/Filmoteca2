@@ -17,4 +17,10 @@
     <string name="sinopsis">"Synopsis: "</string>
     <string name="director">"Director: "</string>
     <string name="vista">already view</string>
+    <string name="selecciondeidioma">"Choose language: "</string>
+    <string name="textoselecciondeidioma">Select the language:</string>
+    <string name="nombredelidioma">Spanish</string>
+    <string name="nombredelidiomaen">English</string>
+    <string name="tituloacercade">About</string>
+    <string name="mensajeacercade">This application was created by Borja Rodriguez for the prog assignment directed by events</string>
 </resources>

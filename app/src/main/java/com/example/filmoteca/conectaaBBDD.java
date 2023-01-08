@@ -91,11 +91,11 @@ public class conectaaBBDD extends AppCompatActivity {
         switch(item.getItemId()){
             case R.id.idioma:
                 AlertDialog.Builder locale = new AlertDialog.Builder(this);
-                locale.setTitle("Seleccion de idioma:");
-                locale.setMessage("Elija el idioma que quiera utilizar en esta aplicación");
+                locale.setTitle(R.string.selecciondeidioma);
+                locale.setMessage(R.string.textoselecciondeidioma);
 
 
-                locale.setPositiveButton("Español", new DialogInterface.OnClickListener() {
+                locale.setPositiveButton(R.string.nombredelidioma, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Locale locale = new Locale("es");
@@ -111,7 +111,7 @@ public class conectaaBBDD extends AppCompatActivity {
                     }
                 });
 
-                locale.setNegativeButton("Inglés", new DialogInterface.OnClickListener() {
+                locale.setNegativeButton(R.string.nombredelidiomaen, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Establece el idioma inglés como el idioma por defecto
@@ -136,8 +136,8 @@ public class conectaaBBDD extends AppCompatActivity {
 
             case R.id.acercade:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("Acerca de");
-                builder.setMessage("Esta aplicacion ha sido creada por Borja Rodriguez Para la asignatura prog dirigida por eventos");
+                builder.setTitle(R.string.tituloacercade);
+                builder.setMessage(R.string.mensajeacercade);
 
 
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {

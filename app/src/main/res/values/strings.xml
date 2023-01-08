@@ -17,8 +17,12 @@
     <string name="sinopsis">Sinopsis: </string>
     <string name="director">Director: </string>
     <string name="vista">Vista: </string>
-
-
+    <string name="selecciondeidioma">Seleccion de idioma: </string>
+    <string name="textoselecciondeidioma">Elija el idioma que quiera utilizar en esta aplicación</string>
+    <string name="nombredelidioma">Español</string>
+    <string name="nombredelidiomaen">Inglés</string>
+    <string name="tituloacercade">Acerca de</string>
+    <string name="mensajeacercade">Esta aplicacion ha sido creada por Borja Rodriguez Para la asignatura prog dirigida por eventos</string>
 
 
 </resources>
