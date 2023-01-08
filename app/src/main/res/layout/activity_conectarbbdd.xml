@@ -18,17 +18,17 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="68dp"
         android:onClick="seleccionarPeli"
-        android:text="Ver lista de peliculas"
+        android:text="@string/botonseleccionarpelis"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textoconexionbbdd"
-        android:layout_width="289dp"
-        android:layout_height="63dp"
+        android:layout_width="317dp"
+        android:layout_height="142dp"
         android:layout_marginTop="160dp"
-        android:text="Conectado a BBDD"
+        android:text="@string/estadodeconexion"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.639"

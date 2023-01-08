@@ -6,4 +6,19 @@
     <string name="AcercaDe">Acerca de</string>
     <string name="buscagoogle">Buscar en Google</string>
     <string name="anyadirpeli">Añadir Pelicula</string>
+    <string name="conectarseabbdd">Conectarse a BBDD</string>
+    <string name="estadodeconexion">Conectandose a BBDD...</string>
+    <string name="botonseleccionarpelis">Abrir lista de peliculas</string>
+    <string name="conectadoabbdd">Conexion a la BBDD completada</string>
+    <string name="noconectadoabbdd">Conexion a la BBDD FALLIDA!</string>
+
+    <string name="titulo">Titulo: </string>
+    <string name="genero">Género: </string>
+    <string name="sinopsis">Sinopsis: </string>
+    <string name="director">Director: </string>
+    <string name="vista">Vista: </string>
+
+
+
+
 </resources>

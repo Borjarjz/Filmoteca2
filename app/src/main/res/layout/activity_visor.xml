@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="92dp"
-        android:text="Titulo: "
+        android:text="@string/titulo"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,7 +24,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
         android:textStyle="bold"
-        android:text="Género: "
+        android:text="@string/genero"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -35,7 +35,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="28dp"
         android:textStyle="bold"
-        android:text="Sinopsis: "
+        android:text="@string/sinopsis"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -46,7 +46,7 @@
         android:layout_marginStart="24dp"
         android:textStyle="bold"
         android:layout_marginTop="200dp"
-        android:text="Director: "
+        android:text="@string/director"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -57,7 +57,7 @@
         android:textStyle="bold"
         android:layout_marginStart="24dp"
         android:layout_marginTop="36dp"
-        android:text="vista: "
+        android:text="@string/vista"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Film library</string>
+    <string name="idioma">Language</string>
+    <string name="editpeli">Edit film</string>
+    <string name="borrapeli">Delete film</string>
+    <string name="AcercaDe">About</string>
+    <string name="buscagoogle">Search in Google</string>
+    <string name="anyadirpeli">Add film</string>
+    <string name="conectarseabbdd">Contect DB</string>
+    <string name="estadodeconexion">Connecting DB</string>
+    <string name="botonseleccionarpelis">Open film list</string>
+    <string name="conectadoabbdd">DB Connection OK</string>
+    <string name="noconectadoabbdd">DB Connection Failed</string>
+    <string name="titulo">"Title: "</string>
+    <string name="genero">"Genre: "</string>
+    <string name="sinopsis">"Synopsis: "</string>
+    <string name="director">"Director: "</string>
+    <string name="vista">already view</string>
+</resources>

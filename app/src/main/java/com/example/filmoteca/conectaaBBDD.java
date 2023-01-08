@@ -6,10 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,6 +25,8 @@ public class conectaaBBDD extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
 
+TextView estadocon=(TextView) findViewById(R.id.textoconexionbbdd);
+
 
 
 
@@ -29,7 +34,7 @@ public class conectaaBBDD extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listapelis);
+        setContentView(R.layout.activity_conectarbbdd);
         mAuth = FirebaseAuth.getInstance();
     }
 
@@ -48,12 +53,12 @@ public class conectaaBBDD extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             //Log.d(TAG, "signInAnonymously:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(conectaaBBDD.this, "Authentication sucessfull.",Toast.LENGTH_SHORT).show();
+                            estadocon.setText(R.string.conectadoabbdd);
+                            estadocon.setTextColor(Color.GREEN);
                             updateUI(user);
                         } else {
-                            // If sign in fails, display a message to the user.
-                            //Log.w(TAG, "signInAnonymously:failure", task.getException());
-                            Toast.makeText(conectaaBBDD.this, "Authentication failed.",Toast.LENGTH_SHORT).show();
+                            estadocon.setText(R.string.noconectadoabbdd);
+                            estadocon.setTextColor(Color.RED);
                             updateUI(null);
                         }
                     }
