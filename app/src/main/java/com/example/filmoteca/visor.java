@@ -49,7 +49,7 @@ public class visor extends AppCompatActivity {
         setContentView(R.layout.activity_visor);
         Intent intent = getIntent();
         pelipulsada = intent.getStringExtra("MESSAGE");
-        Toast.makeText(visor.this,"se pasa "+pelipulsada,Toast.LENGTH_SHORT).show();
+
 
 
 

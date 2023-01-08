@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -18,6 +19,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class editor extends AppCompatActivity {
 
@@ -95,40 +99,38 @@ public class editor extends AppCompatActivity {
 
     }
 //hasta aqui se crea el menu
-public void guardaCambios(){
+public void guardaCambios(View view){
 
-    Query query =raiz.orderByChild("Titulo").equalTo(titulo);
+    Query query = raiz.orderByChild("Titulo").equalTo(titulo);
+
     //raiz.orderByChild("Titulo").equalTo(pelipulsada)
-    query.addValueEventListener(new ValueEventListener() {
+
+    query.addListenerForSingleValueEvent(new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            // This method is called once with the initial value and again
-            // whenever data at this location is updated.
-            //String value = snapshot.getValue(String.class);
-
-
-
             for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
-                snapshot.child("Titulo").getRef().setValue(tit.getText());
-                snapshot.child("Genero").getRef().setValue(gen.getText());
-                snapshot.child("Sinopsis").getRef().setValue(sin.getText());
-                snapshot.child("Director").getRef().setValue(dir.getText());
-                if(vis.isChecked()){
-                    snapshot.child("vista").getRef().setValue(true);
-                }else{
-                    snapshot.child("vista").getRef().setValue(false);
-                }
-            }
+                Map<String, Object> updates = new HashMap<>();
+                updates.put("Titulo", tit.getText().toString());
+                updates.put("Genero", gen.getText().toString());
+                updates.put("Sinopsis", sin.getText().toString());
+                updates.put("Director", dir.getText().toString());
+                updates.put("vista", vis.isChecked());
+                snapshot.getRef().updateChildren(updates);
 
+            }
         }
 
         @Override
         public void onCancelled(@NonNull DatabaseError error) {
             // Failed to read value
-
         }
     });
+
+
+
+
+
 }
 
 
