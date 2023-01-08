@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.SearchManager;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,6 +25,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.Locale;
 
 public class visor extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -127,7 +130,47 @@ public class visor extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {//se hace el CASE para cada opción del menu
         switch(item.getItemId()){
             case R.id.idioma:
-                Toast.makeText(visor.this,"ha pulsado idioma",Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder locale = new AlertDialog.Builder(this);
+                locale.setTitle("Seleccion de idioma:");
+                locale.setMessage("Elija el idioma que quiera utilizar en esta aplicación");
+
+
+                locale.setPositiveButton("Español", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Locale locale = new Locale("es");
+                        Locale.setDefault(locale);
+
+                        Configuration config = new Configuration();
+                        config.locale = locale;
+                        getBaseContext().getResources().updateConfiguration(config,
+                                getBaseContext().getResources().getDisplayMetrics());
+
+                        // Vuelve a cargar la interfaz de usuario para que se reflejen los cambios de idioma
+                        recreate();
+                    }
+                });
+
+                locale.setNegativeButton("Inglés", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Establece el idioma inglés como el idioma por defecto
+                        Locale locale = new Locale("en");
+                        Locale.setDefault(locale);
+
+                        Configuration config = new Configuration();
+                        config.locale = locale;
+                        getBaseContext().getResources().updateConfiguration(config,
+                                getBaseContext().getResources().getDisplayMetrics());
+
+                        // Vuelve a cargar la interfaz de usuario para que se reflejen los cambios de idioma
+                        recreate();
+                    }
+                });
+
+                // Muestra el cuadro de diálogo
+                AlertDialog dialog = locale.create();
+                dialog.show();
                 return true;
 
             case R.id.editpeli:
