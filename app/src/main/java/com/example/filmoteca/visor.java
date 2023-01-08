@@ -219,7 +219,13 @@ public class visor extends AppCompatActivity {
     }
 //hasta aqui se crea el menu
 
+    public void onConfigurationChanged(Configuration newConfig) {
+        // TODO Auto-generated method stub
+        super.onConfigurationChanged(newConfig);
+        startActivity(getIntent());
+        finish();
 
+    }
 
     public void irActivityeditor() {//método que lanzara la actividad siguiente con un intent
         Intent intent2 = new Intent(visor.this,editor.class);
@@ -263,6 +269,8 @@ public class visor extends AppCompatActivity {
 
             }
         });
+
+
 
     }
 }

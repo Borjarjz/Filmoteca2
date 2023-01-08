@@ -32,7 +32,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="396dp"
+        android:layout_marginStart="320dp"
         android:layout_marginTop="92dp"
         android:text="@string/sinopsis"
         android:textStyle="bold"
@@ -83,9 +83,9 @@
 
     <TextView
         android:id="@+id/sinopsismostrar"
-        android:layout_width="255dp"
-        android:layout_height="207dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="235dp"
+        android:layout_height="208dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="92dp"
         android:text="kfjhgdkfljghjdfhjklghjkdfghjkldjflhkghjlkdhjklf dfjkg hjkdflhjkg lhjkd dhjk fhjkghjk hjkdhjkjhdkf hjdhjk jd hjkdhjkfghdfkjghdfk jkj  ldjkfhjgkjldfhjgk"
         app:layout_constraintStart_toEndOf="@+id/textView3"

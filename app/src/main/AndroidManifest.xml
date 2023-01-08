@@ -40,7 +40,7 @@
         <activity
             android:name=".visor"
             android:exported="false"
-            android:configChanges="orientation|screenSize"
+            android:configChanges="orientation|keyboardHidden"
             android:parentActivityName=".PelisListView">
 
             <meta-data
