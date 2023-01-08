@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import android.view.MenuItem;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -58,7 +59,7 @@ public class editor extends AppCompatActivity {
 
 
         vis=findViewById(R.id.entradavista);
-        if(intent.getStringExtra("VISTA")=="true"){
+        if(intent.getStringExtra("VISTA").equals("true")){
             vis.setChecked(true);
         }else{
             vis.setChecked(false);
@@ -93,8 +94,16 @@ public class editor extends AppCompatActivity {
             case R.id.acercade:
                 Toast.makeText(editor.this,"ha pulsado acerca de",Toast.LENGTH_SHORT).show();
                 return true;
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
+
+
+
+
         }
 
     }
@@ -131,7 +140,19 @@ public void guardaCambios(View view){
 
 
 
+
+
 }
+
+    @Override
+    public void onBackPressed() {
+
+
+        Intent intent2 = new Intent(editor.this,PelisListView.class);
+        startActivity(intent2);
+    }
+
+
 
 
 }
