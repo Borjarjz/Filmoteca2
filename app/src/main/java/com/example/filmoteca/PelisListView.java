@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -107,7 +108,7 @@ public class PelisListView extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {//Se crea el menú que queramos para nuestra activity (inflate)
-        getMenuInflater().inflate(R.menu.menu1,menu);
+        getMenuInflater().inflate(R.menu.menu3,menu);
         return true;
         // return super.onCreateOptionsMenu(menu);
 
@@ -126,6 +127,11 @@ public class PelisListView extends AppCompatActivity {
             case R.id.acercade:
                 Toast.makeText(PelisListView.this,"ha pulsado acerca de",Toast.LENGTH_SHORT).show();
                 return true;
+            case R.id.anyadirpeli:
+                Intent intent3 = new Intent(PelisListView.this,IntroducePeli.class);
+                startActivity(intent3);
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

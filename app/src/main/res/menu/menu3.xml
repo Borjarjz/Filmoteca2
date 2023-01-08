@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/idioma"
+        android:title="@string/idioma"/>
+
+
+    <item android:id="@+id/anyadirpeli"
+        android:title="Añadir Pelicula"
+
+        />
+
+
+    <item android:id="@+id/acercade"
+        android:title="@string/AcercaDe" />
+</menu>
