@@ -3,6 +3,7 @@ package com.example.filmoteca;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -133,11 +134,16 @@ public class visor extends AppCompatActivity {
                 return true;
 
             case R.id.borrarpeli:
-                Toast.makeText(visor.this,"ha pulsado borrar",Toast.LENGTH_SHORT).show();
+                borrarlapeli(pelipulsada);
+                Toast.makeText(visor.this,"se ha borrado la entrada: "+pelipulsada,Toast.LENGTH_SHORT).show();
+                Intent intent4 = new Intent(visor.this,PelisListView.class);
+                startActivity(intent4);
                 return true;
 
             case R.id.buscagoogle:
-                Toast.makeText(visor.this,"ha pulsado buscar en google",Toast.LENGTH_SHORT).show();
+                Intent intent3 = new Intent(Intent.ACTION_WEB_SEARCH);
+                intent3.putExtra(SearchManager.QUERY, pelipulsada);
+                startActivity(intent3);
                 return true;
             case R.id.acercade:
                 Toast.makeText(visor.this,"ha pulsado acerca de",Toast.LENGTH_SHORT).show();
@@ -159,6 +165,40 @@ public class visor extends AppCompatActivity {
         intent2.putExtra("DIRECTOR", director);
         intent2.putExtra("VISTA", vista);
         startActivity(intent2);
+
+    }
+
+    public void borrarlapeli(String peliaborrar){
+        Query query =raiz.orderByChild("Titulo").equalTo(peliaborrar);
+
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                //String value = snapshot.getValue(String.class);
+
+
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
+                    snapshot.getRef().removeValue();
+
+
+
+                }
+
+
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Failed to read value
+
+            }
+        });
 
     }
 }
