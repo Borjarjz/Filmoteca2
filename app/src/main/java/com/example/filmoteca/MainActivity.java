@@ -44,7 +44,19 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {//se hace el CASE para cada opción del menu
         switch(item.getItemId()){
             case R.id.idioma:
-                Toast.makeText(MainActivity.this,"ha pulsado idioma",Toast.LENGTH_SHORT).show();
+                /*AlertDialog.Builder locale = new AlertDialog.Builder(this);
+                locale.setTitle("Seleccion de idioma:");
+                locale.setMessage("Esta aplicacion ha sido creada por Borja Rodriguez Para la asignatura prog dirigida por eventos");
+
+
+                locale.setPositiveButton("Esp", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                locale.create();
+                locale.show();*/
                 return true;
 
 

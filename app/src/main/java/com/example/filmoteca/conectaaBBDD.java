@@ -25,7 +25,7 @@ public class conectaaBBDD extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
 
-TextView estadocon=(TextView) findViewById(R.id.textoconexionbbdd);
+
 
 
 
@@ -49,7 +49,9 @@ TextView estadocon=(TextView) findViewById(R.id.textoconexionbbdd);
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        TextView estadocon=(TextView) findViewById(R.id.textoconexionbbdd);
                         if (task.isSuccessful()) {
+
                             // Sign in success, update UI with the signed-in user's information
                             //Log.d(TAG, "signInAnonymously:success");
                             FirebaseUser user = mAuth.getCurrentUser();
