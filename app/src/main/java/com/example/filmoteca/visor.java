@@ -60,6 +60,9 @@ public class visor extends AppCompatActivity {
 
 
 
+
+
+
         Query query =raiz.orderByChild("Titulo").equalTo(pelipulsada);
 
 

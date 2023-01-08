@@ -23,7 +23,8 @@
     <string name="nombredelidiomaen">Inglés</string>
     <string name="tituloacercade">Acerca de</string>
     <string name="mensajeacercade">Esta aplicacion ha sido creada por Borja Rodriguez Para la asignatura prog dirigida por eventos</string>
-
+    <string name="botonguardarnuevapeli">Guardar Pelicula</string>
+    <string name="guardarcambios">Guardar Cambios</string>
 
 
 </resources>

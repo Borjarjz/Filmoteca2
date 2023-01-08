@@ -40,7 +40,9 @@
         <activity
             android:name=".visor"
             android:exported="false"
+            android:configChanges="orientation|screenSize"
             android:parentActivityName=".PelisListView">
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
