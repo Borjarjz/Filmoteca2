@@ -47,11 +47,8 @@ public class visor extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            setContentView(R.layout.activity_visor_land);
-        } else {
-            setContentView(R.layout.activity_visor_land);
-        }
+        setContentView(R.layout.activity_visor);
+
 
 
         Intent intent = getIntent();
@@ -67,7 +64,7 @@ public class visor extends AppCompatActivity {
         Query query =raiz.orderByChild("Titulo").equalTo(pelipulsada);
 
 
-        setContentView(R.layout.activity_visor_land);
+        setContentView(R.layout.activity_visor);
 
         tit=(TextView)findViewById(R.id.titulomostrar);
         gen=(TextView)findViewById(R.id.generomostrar);
