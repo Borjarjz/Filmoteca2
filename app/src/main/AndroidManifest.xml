@@ -8,9 +8,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher_foreground"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_launcher_foreground"
         android:supportsRtl="true"
         android:theme="@style/Theme.Filmoteca"
         tools:targetApi="31">
@@ -40,7 +40,7 @@
         <activity
             android:name=".visor"
             android:exported="false"
-            android:configChanges="orientation|keyboardHidden"
+            android:configChanges="orientation|screenSize"
             android:parentActivityName=".PelisListView">
 
             <meta-data

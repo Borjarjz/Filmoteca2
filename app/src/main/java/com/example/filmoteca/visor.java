@@ -11,11 +11,6 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,7 +47,13 @@ public class visor extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_visor);
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            setContentView(R.layout.activity_visor_land);
+        } else {
+            setContentView(R.layout.activity_visor_land);
+        }
+
+
         Intent intent = getIntent();
         pelipulsada = intent.getStringExtra("MESSAGE");
 
@@ -66,7 +67,7 @@ public class visor extends AppCompatActivity {
         Query query =raiz.orderByChild("Titulo").equalTo(pelipulsada);
 
 
-        setContentView(R.layout.activity_visor);
+        setContentView(R.layout.activity_visor_land);
 
         tit=(TextView)findViewById(R.id.titulomostrar);
         gen=(TextView)findViewById(R.id.generomostrar);
@@ -111,7 +112,6 @@ public class visor extends AppCompatActivity {
 
             }
         });
-
 
 
 
