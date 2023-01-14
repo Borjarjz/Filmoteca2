@@ -32,12 +32,14 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class PelisListView extends AppCompatActivity {
-    private ListView listview;
+public class PelisListView extends AppCompatActivity {//activity que muestra la lista de peliculas, una listview wen la que podrmos seleccionar una de las peliculas y verla en el visor
 
-    private String pelipulsada=null;
+    //Declaración de variables
+    private ListView listview; //declaracion de listview
 
-    //database
+    private String pelipulsada=null;//variable que guardará el titulo de la pelicula que se pulse en la lista
+
+    //variables de database
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference raiz = database.getReference("PELICULAS");
     final ArrayList<String> names = new ArrayList<>();
@@ -48,25 +50,29 @@ public class PelisListView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pelis_list_view);
 
-    Query query =raiz.orderByChild("Titulo");
+    Query query =raiz.orderByChild("Titulo");//query de la BBDD para ordenar por titulo
 
 
 
 
 
-        query.addValueEventListener(new ValueEventListener() {
+        query.addValueEventListener(new ValueEventListener() {//añadimos un listener para que cada vez que se modifique un elemento se actualice la lista
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                //String value = snapshot.getValue(String.class);
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {//recorremos la BBDD y añadimos en el arraylist names el titulo de cada pelicula
                     String tit = snapshot.child("Titulo").getValue(String.class);
                     names.add(tit);
                 }
+
+                //creacion del adaptador para meter los datos del arraylist names en la listview
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(PelisListView.this, android.R.layout.simple_list_item_1, names);
                 listview = (ListView) findViewById(R.id.listviewdepelis);
                 listview.setAdapter(adapter);
+
+
+
+                //listener para cuando se pulse una pelicula de la lista
                         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {//se crea el click listener de la listview
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -95,11 +101,6 @@ public class PelisListView extends AppCompatActivity {
             }
         });
 
-/*
-             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, names);
-                listview = (ListView) findViewById(R.id.listviewdepelis);
-                listview.setAdapter(adapter);
-*/
 
 
 
@@ -108,18 +109,20 @@ public class PelisListView extends AppCompatActivity {
 
 
 
-    //esto es menu
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {//Se crea el menú que queramos para nuestra activity (inflate)
         getMenuInflater().inflate(R.menu.menu3,menu);
         return true;
-        // return super.onCreateOptionsMenu(menu);
+
 
     }
 
 
 
+
+    //Creacion del menú de opciones
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {//se hace el CASE para cada opción del menu
         switch(item.getItemId()){
@@ -184,7 +187,7 @@ public class PelisListView extends AppCompatActivity {
                 builder.show();
 
                 return true;
-            case R.id.anyadirpeli:
+            case R.id.anyadirpeli://se crea el intent para ir a la activity de añadir pelicula
                 Intent intent3 = new Intent(PelisListView.this,IntroducePeli.class);
                 startActivity(intent3);
                 return true;
@@ -198,5 +201,5 @@ public class PelisListView extends AppCompatActivity {
 
 
 
-//hasta aqui se crea el menu
+//Fin del menu de opciones
 }

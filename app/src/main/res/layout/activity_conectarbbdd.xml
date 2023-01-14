@@ -10,14 +10,12 @@
     tools:context=".conectaaBBDD">
 
 
-
-
     <Button
         android:id="@+id/botonverlistapelis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="68dp"
-        android:onClick="seleccionarPeli"
+        android:onClick="irActivityVisor"
         android:text="@string/botonseleccionarpelis"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

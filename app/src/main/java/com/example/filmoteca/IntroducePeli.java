@@ -28,7 +28,7 @@ import java.util.Map;
 
 public class IntroducePeli extends AppCompatActivity {
 
-
+//declaracion de variables
 
     EditText tit;
     EditText gen;
@@ -36,6 +36,8 @@ public class IntroducePeli extends AppCompatActivity {
     EditText dir;
     CheckBox vis;
 
+
+    //variables de bbdd
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference raiz = database.getReference("PELICULAS");
 
@@ -45,7 +47,7 @@ public class IntroducePeli extends AppCompatActivity {
         setContentView(R.layout.activity_editor);
         Intent intent = getIntent();
 
-
+//se asigna a cada variable textview del layout las variables locales
 
         tit=(EditText)findViewById(R.id.entradatitulo);
         gen=(EditText)findViewById(R.id.entradagenero);
@@ -150,7 +152,10 @@ public class IntroducePeli extends AppCompatActivity {
 
     }
     //hasta aqui se crea el menu
-    public void guardaCambios(View view){
+
+
+
+    public void guardaCambios(View view){//metodo para guardar cambios en la bbdd
 
                     Map<String, Object> updates = new HashMap<>();
                     updates.put("Titulo", tit.getText().toString());
@@ -165,7 +170,7 @@ public class IntroducePeli extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed() {//override del metodo onBackpressed para que al pulsar el boton de atras se vaya a la activity listview
 
 
         Intent intent2 = new Intent(IntroducePeli.this,PelisListView.class);

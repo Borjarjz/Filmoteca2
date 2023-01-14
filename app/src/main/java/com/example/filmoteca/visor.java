@@ -24,11 +24,13 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Locale;
 
 public class visor extends AppCompatActivity {
+
+    //variables de bbdd
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference raiz = database.getReference("PELICULAS");
     String pelipulsada=null;
 
-
+//declaraciuon de variables
     TextView tit;
     TextView gen;
     TextView sin;
@@ -50,7 +52,7 @@ public class visor extends AppCompatActivity {
         setContentView(R.layout.activity_visor);
 
 
-
+//se obtiene el intent de la actividad anterior y un string con el titulo de la pelicula pulsada
         Intent intent = getIntent();
         pelipulsada = intent.getStringExtra("MESSAGE");
 
@@ -61,11 +63,11 @@ public class visor extends AppCompatActivity {
 
 
 
-        Query query =raiz.orderByChild("Titulo").equalTo(pelipulsada);
+        Query query =raiz.orderByChild("Titulo").equalTo(pelipulsada);//se hace la query para obtener la pelicula pulsada en la actividad anterior
 
 
-        setContentView(R.layout.activity_visor);
 
+//se asigna a cada variable textview del layout las variables locales
         tit=(TextView)findViewById(R.id.titulomostrar);
         gen=(TextView)findViewById(R.id.generomostrar);
         sin=(TextView)findViewById(R.id.sinopsismostrar);
@@ -76,14 +78,14 @@ public class visor extends AppCompatActivity {
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                //String value = snapshot.getValue(String.class);
 
 
 
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {//se recorre el snapshot de la query en busca de la pelicula pulsada
+
+
+                    //asignamos los datos de la BBDD en las variables locales textview
                     tit.setText(snapshot.child("Titulo").getValue(String.class));
                     titulo=snapshot.child("Titulo").getValue(String.class);
 
@@ -116,7 +118,10 @@ public class visor extends AppCompatActivity {
     }
 
 
-    //esto es menu
+
+
+
+    //Creacion de menu
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {//Se crea el menú que queramos para nuestra activity (inflate)
@@ -191,11 +196,15 @@ public class visor extends AppCompatActivity {
 
                 return true;
 
+
+                //se crea el case para el boton de editar, que nos llevará a la activity editar
             case R.id.editpeli:
                 Toast.makeText(visor.this,"ha pulsado editar",Toast.LENGTH_SHORT).show();
                 irActivityeditor();
                 return true;
 
+
+                //se crea el case para el boton de borrar, que borrará la película que estámos viendo en el visor
             case R.id.borrarpeli:
                 borrarlapeli(pelipulsada);
                 Toast.makeText(visor.this,"se ha borrado la entrada: "+pelipulsada,Toast.LENGTH_SHORT).show();
@@ -203,6 +212,8 @@ public class visor extends AppCompatActivity {
                 startActivity(intent4);
                 return true;
 
+
+                //se crea el case para el boton buscar en google, que creará iun intent y abrira una busqueda en google de la pelicula mostrada
             case R.id.buscagoogle:
                 Intent intent3 = new Intent(Intent.ACTION_WEB_SEARCH);
                 intent3.putExtra(SearchManager.QUERY, pelipulsada);
@@ -216,7 +227,11 @@ public class visor extends AppCompatActivity {
     }
 //hasta aqui se crea el menu
 
-    public void onConfigurationChanged(Configuration newConfig) {
+
+
+
+
+    public void onConfigurationChanged(Configuration newConfig) {//se crea el metodo para que se actualice al cambiar la orientacion
         // TODO Auto-generated method stub
         super.onConfigurationChanged(newConfig);
         startActivity(getIntent());
@@ -224,7 +239,7 @@ public class visor extends AppCompatActivity {
 
     }
 
-    public void irActivityeditor() {//método que lanzara la actividad siguiente con un intent
+    public void irActivityeditor() {//método que lanzara la actividad editor con un intent, se le pasa los string de los datos de la pelicula
         Intent intent2 = new Intent(visor.this,editor.class);
         intent2.putExtra("TITULO", titulo);
         intent2.putExtra("GENERO", genero);
@@ -235,15 +250,13 @@ public class visor extends AppCompatActivity {
 
     }
 
-    public void borrarlapeli(String peliaborrar){
+    public void borrarlapeli(String peliaborrar){//metodo que borra de la BBDD la pelicula que estemos viendo en el visor
         Query query =raiz.orderByChild("Titulo").equalTo(peliaborrar);
 
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                //String value = snapshot.getValue(String.class);
+
 
 
 

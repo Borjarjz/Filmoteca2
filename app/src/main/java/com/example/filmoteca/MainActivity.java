@@ -20,11 +20,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {//override del metodo onCreate autogenerado
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
     }
 
 
@@ -33,20 +31,20 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-   //esto es menu
+   //Creacion del menu de opciones
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {//Se crea el menú que queramos para nuestra activity (inflate)
+    public boolean onCreateOptionsMenu(Menu menu) {//Se crea el menú que queramos(de las tres variantes posibles) para nuestra activity (inflate)
         getMenuInflater().inflate(R.menu.menu1,menu);
         return true;
-       // return super.onCreateOptionsMenu(menu);
+
 
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {//se hace el CASE para cada opción del menu
         switch(item.getItemId()){
-            case R.id.idioma:
+            case R.id.idioma: //case idioma con las dos opciones ingles-español y el mensaje de confirmacion
                 AlertDialog.Builder locale = new AlertDialog.Builder(this);
                 locale.setTitle(R.string.selecciondeidioma);
                 locale.setMessage(R.string.textoselecciondeidioma);
@@ -91,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
 
-            case R.id.acercade:
+            case R.id.acercade://case acerca de con el mensaje de acerca de, crea un cuadro de dialogo con un mensaje descriptivo
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle(R.string.tituloacercade);
                 builder.setMessage(R.string.mensajeacercade);
@@ -112,7 +110,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-//hasta aqui se crea el menu
+//hasta aqui la creacion del menu de opciones
+
+
     public void irActivityConcexionbbdd(View view) {//método que lanzara la actividad siguiente con un intent
         Intent intent = new Intent(MainActivity.this, conectaaBBDD.class);
         startActivity(intent);

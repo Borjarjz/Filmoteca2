@@ -30,12 +30,15 @@ import java.util.Map;
 
 public class editor extends AppCompatActivity {
 
+    //declaracion de variables
+
     String titulo;
     EditText tit;
     EditText gen;
     EditText sin;
     EditText dir;
     CheckBox vis;
+//variables de bbdd
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference raiz = database.getReference("PELICULAS");
@@ -47,7 +50,7 @@ public class editor extends AppCompatActivity {
         Intent intent = getIntent();
 
 
-
+        //se adignar las variables locales a los EditText de la activity y se les asigna el valor del string que se ha pasado por el intent (la información en cada campo)
         tit=(EditText)findViewById(R.id.entradatitulo);
         tit.setText(intent.getStringExtra("TITULO"));
         titulo=intent.getStringExtra("TITULO");
@@ -165,11 +168,11 @@ public class editor extends AppCompatActivity {
 
     }
 //hasta aqui se crea el menu
-public void guardaCambios(View view){
+public void guardaCambios(View view){//metodo que se ejecuta al pulsar el boton de guardar cambios y almacena los valores de los edittext en la bbdd
 
     Query query = raiz.orderByChild("Titulo").equalTo(titulo);
 
-    //raiz.orderByChild("Titulo").equalTo(pelipulsada)
+
 
     query.addListenerForSingleValueEvent(new ValueEventListener() {
         @Override

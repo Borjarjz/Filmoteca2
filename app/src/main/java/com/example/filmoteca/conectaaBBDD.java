@@ -25,7 +25,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.Locale;
 
 public class conectaaBBDD extends AppCompatActivity {
-    private FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;//conexion a la BBDD Firebase
 
 
 
@@ -34,7 +34,7 @@ public class conectaaBBDD extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {//override del metodo onCreate, se hace un getInstance de la conexion a la BBDD
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conectarbbdd);
@@ -42,21 +42,20 @@ public class conectaaBBDD extends AppCompatActivity {
     }
 
     @Override
-    public void onStart() {
+    public void onStart() {//override del metodo onStart, se comprueba si el usuario esta logueado o no anonimamente
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
+
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
 
         mAuth.signInAnonymously()
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {//se comprueba si el usuario esta logueado o no anonimamente
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         TextView estadocon=(TextView) findViewById(R.id.textoconexionbbdd);
-                        if (task.isSuccessful()) {
+                        if (task.isSuccessful()) {//dependiendo del estado de la conexion se muestra un mensaje en verde o rojo
 
-                            // Sign in success, update UI with the signed-in user's information
-                            //Log.d(TAG, "signInAnonymously:success");
+
                             FirebaseUser user = mAuth.getCurrentUser();
                             estadocon.setText(R.string.conectadoabbdd);
                             estadocon.setTextColor(Color.GREEN);
@@ -161,17 +160,14 @@ public class conectaaBBDD extends AppCompatActivity {
     }
 
 
+
+    //este metodo abre la siguiente actividad mediante un intent
     public void irActivityVisor(View view){
 
     Intent intent = new Intent(conectaaBBDD.this,PelisListView.class);
     startActivity(intent);
 
     }
-    public void seleccionarPeli(View view){
-        //hay que abrir la lista. seleccionar uno. guardarlo y pasarlo al siguiente intent
 
-        irActivityVisor(view);
-
-    }
 
 }
