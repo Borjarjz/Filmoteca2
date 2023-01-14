@@ -1,0 +1,88 @@
+{
+  "PELICULAS": {
+    "Batman Begins": {
+      "Director": "Christopher Nolan",
+      "Genero": "Accion",
+      "Sinopsis": "Bruce Wayne vive obsesionado con el recuerdo de la muerte de sus padres. Atormentado, se va de Gotham y encuentra a un extraño personaje que lo entrena en todas las disciplinas físicas y mentales que le servirán para combatir el Mal..",
+      "Titulo": "Batman Begins",
+      "vista": true
+    },
+    "El Caballero Oscuro": {
+      "Director": "Christopher Nolan",
+      "Genero": "Accion",
+      "Sinopsis": "Con la ayuda del teniente Jim Gordon y del Fiscal del Distrito Harvey Dent, Batman mantiene a raya el crimen organizado en Gotham. Todo cambia cuando aparece el Joker, un nuevo criminal que desencadena el caos y tiene aterrados a los ciudadanos.",
+      "Titulo": "El Caballero Oscuro",
+      "vista": true
+    },
+    "El Padrino": {
+      "Director": "Francis Ford Coppola",
+      "Genero": "Suspense",
+      "Sinopsis": "Don Vito Corleone es el respetado y temido jefe de una de las cinco familias de la mafia de Nueva York en los años 40. El hombre tiene cuatro hijos: Connie, Sonny, Fredo y Michael, que no quiere saber nada de los negocios sucios de su padre.",
+      "Titulo": "El Padrino",
+      "vista": false
+    },
+    "El Padrino2": {
+      "Director": "Francis Ford Coppola",
+      "Genero": "Suspense",
+      "Sinopsis": "Don Vito Corleone es el respetado y temido jefe de una de las cinco familias de la mafia de Nueva York en los años 40. El hombre tiene cuatro hijos: Connie, Sonny, Fredo y Michael, que no quiere saber nada de los negocios sucios de su padre.",
+      "Titulo": "El Padrino2",
+      "vista": false
+    },
+    "El Pianista": {
+      "Director": "Roman Polanski",
+      "Genero": "Drama",
+      "Sinopsis": "Wladyslaw Szpilman, un brillante pianista polaco de origen judio, vive con su familia en el ghetto de Varsovia. Cuando, en 1939, los alemanes invaden Polonia, consigue evitar la deportacion gracias a la ayuda de algunos amigos.",
+      "Titulo": "El Pianista",
+      "vista": false
+    },
+    "El club de la lucha": {
+      "Director": "David Fincher",
+      "Genero": "Suspense",
+      "Sinopsis": "Un empleado de oficina insomne en busca de una manera de cambiar su vida se cruza con un vendedor y crean un club de lucha clandestino como forma de terapia.",
+      "Titulo": "El club de la lucha",
+      "vista": false
+    },
+    "El fugitivo": {
+      "Director": "Andrew Davis",
+      "Genero": "Suspense",
+      "Sinopsis": "Tras una serie de crímenes donde a las víctimas les faltaba parte de la piel, una agente del FBI inicia su carrera particular para dar con el asesino. Para resolver el caso la agente encargada deberá envtrevistarse con el doctor Hannibal Lecter.",
+      "Titulo": "El fugitivo",
+      "vista": false
+    },
+    "El silencio de los corderos": {
+      "Director": "Jonathan Demme",
+      "Genero": "Suspense",
+      "Sinopsis": "Tras una serie de crímenes donde a las víctimas les faltaba parte de la piel, una agente del FBI inicia su carrera particular para dar con el asesino. Para resolver el caso la agente encargada deberá envtrevistarse con el doctor Hannibal Lecter.",
+      "Titulo": "El silencio de los corderos",
+      "vista": true
+    },
+    "Matrix": {
+      "Director": "Wachosky Bros",
+      "Genero": "Accion",
+      "Sinopsis": "El programador informático Thomas Anderson, más conocido en el mundo de los \"hacker\" como Neo, está en el punto de mira del temible agente Smith. Otros dos piratas informáticos, Trinity y Morfeo, se ponen en contacto con Neo para ayudarlo a escapar. Matrix te posee. Sigue al conejo blanco.",
+      "Titulo": "Matrix",
+      "vista": true
+    },
+    "Memento": {
+      "Director": "Christopher Nolan",
+      "Genero": "Suspense",
+      "Sinopsis": "Leonard es un investigador de una agencia de seguros cuya memoria está irreversiblemente dañada por culpa de un golpe en la cabeza, al intentar evitar el asesinato de su mujer: éste es el último hecho que recuerda del pasado.",
+      "Titulo": "Memento",
+      "vista": true
+    },
+    "Rambo I": {
+      "Director": "Ted Kotcheff",
+      "Genero": "Accion",
+      "Sinopsis": "John Rambo es un veterano boina verde que luchó en Vietnam. Un día va a visitar a un viejo amigo del ejército pero se entera de que ha muerto. Algunos días después, la policía lo detiene por vagabundo y se enseña con él..",
+      "Titulo": "Rambo I",
+      "vista": false
+    },
+    "Rambo II": {
+      "Director": "Ted Kotcheff",
+      "Genero": "Accion",
+      "Sinopsis": "El ex Boina Verde John Rambo,es liberado de la cárcel por el coronel Troutman para que le ayude en la búsqueda de prisioneros de guerra americanos en el sureste de Asia.",
+      "Titulo": "Rambo II",
+      "vista": true
+    }
+  }
+}
