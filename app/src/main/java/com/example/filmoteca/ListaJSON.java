@@ -7,69 +7,74 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.squareup.okhttp.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
-public class conectaaBBDD extends AppCompatActivity {
-    private FirebaseAuth mAuth;//conexion a la BBDD Firebase
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 
+public class ListaJSON extends AppCompatActivity {
 
-
-
-
+    private ListView listView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {//override del metodo onCreate, se hace un getInstance de la conexion a la BBDD
-
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_conectarbbdd);
-        mAuth = FirebaseAuth.getInstance();
-    }
+        setContentView(R.layout.activity_lista_json);
 
-    @Override
-    public void onStart() {//override del metodo onStart, se comprueba si el usuario esta logueado o no anonimamente
-        super.onStart();
-
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
-
-        mAuth.signInAnonymously()
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {//se comprueba si el usuario esta logueado o no anonimamente
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        TextView estadocon=(TextView) findViewById(R.id.textoconexionbbdd);
-                        if (task.isSuccessful()) {//dependiendo del estado de la conexion se muestra un mensaje en verde o rojo
+        Intent intent = getIntent();
+        String direccion=intent.getStringExtra("direccion");
+        //Toast.makeText(getApplicationContext(), direccion, Toast.LENGTH_SHORT).show();
 
 
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            estadocon.setText(R.string.conectadoabbdd);
-                            estadocon.setTextColor(Color.GREEN);
-                            updateUI(user);
-                        } else {
-                            estadocon.setText(R.string.noconectadoabbdd);
-                            estadocon.setTextColor(Color.RED);
-                            updateUI(null);
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(direccion)
+                .build();
+
+        MyAPI myAPI = retrofit.create(MyAPI.class);
+
+        Call<String> call = myAPI.getData(direccion);
+        call.enqueue(new Callback<String>() {
+                         @Override
+                         public void onResponse(Call<String> call, Response<String> response) {
+                             if (response.isSuccessful()) {
+                                 // Procesa la respuesta
+                             } else {
+                                 // Maneja el error
+                             }
+                         }
+
+                        @Override
+                        public void onFailure(Call<String> call, Throwable t) {
+                            //Maneja el error de conexión
                         }
-                    }
-                });
+                          });
+
+
+        listView = (ListView) findViewById(R.id.listView);
+
+        //aqui meteremos el data en el
+        /*
+        AdaptadorJSON adaptador = new AdaptadorJSON(this, data);
+        listView.setAdapter(adaptador);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arraydepelis);
+        listView.setAdapter(adapter);*/
+
 
     }
-
 
 
 
@@ -154,26 +159,4 @@ public class conectaaBBDD extends AppCompatActivity {
         }
 
     }
-
-    private void updateUI(FirebaseUser user) {
-
-    }
-
-
-
-    //este metodo abre la siguiente actividad mediante un intent
-    public void irActivityVisor(View view){
-
-    Intent intent = new Intent(conectaaBBDD.this,PelisListView.class);
-    startActivity(intent);
-
-    }
-
-    public void irActivityJSON(View view){
-        Intent intent4 = new Intent(conectaaBBDD.this,ConJSON.class);
-        startActivity(intent4);
-
-    }
-
-
 }

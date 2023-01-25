@@ -25,4 +25,8 @@
     <string name="mensajeacercade">This application was created by Borja Rodriguez for the prog assignment directed by events</string>
     <string name="botonguardarnuevapeli">Save Film</string>
     <string name="guardarcambios">Save Changes</string>
+    <string name="conectarseabbdd2">Connect JSON DB</string>
+    <string name="estadodeconexion2">Connecting JSON...</string>
+    <string name="botonseleccionarpelis2">Open film list JSON</string>
+    <string name="Direccionalaqueconectar">"Direction you want to connect: "</string>
 </resources>

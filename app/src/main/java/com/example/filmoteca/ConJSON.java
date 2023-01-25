@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,51 +23,18 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Locale;
 
-public class conectaaBBDD extends AppCompatActivity {
-    private FirebaseAuth mAuth;//conexion a la BBDD Firebase
-
-
-
-
-
+public class ConJSON extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {//override del metodo onCreate, se hace un getInstance de la conexion a la BBDD
+    protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_conectarbbdd);
-        mAuth = FirebaseAuth.getInstance();
-    }
-
-    @Override
-    public void onStart() {//override del metodo onStart, se comprueba si el usuario esta logueado o no anonimamente
-        super.onStart();
-
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
-
-        mAuth.signInAnonymously()
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {//se comprueba si el usuario esta logueado o no anonimamente
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        TextView estadocon=(TextView) findViewById(R.id.textoconexionbbdd);
-                        if (task.isSuccessful()) {//dependiendo del estado de la conexion se muestra un mensaje en verde o rojo
-
-
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            estadocon.setText(R.string.conectadoabbdd);
-                            estadocon.setTextColor(Color.GREEN);
-                            updateUI(user);
-                        } else {
-                            estadocon.setText(R.string.noconectadoabbdd);
-                            estadocon.setTextColor(Color.RED);
-                            updateUI(null);
-                        }
-                    }
-                });
+        setContentView(R.layout.activity_con_json);
 
     }
+
+
 
 
 
@@ -155,25 +121,21 @@ public class conectaaBBDD extends AppCompatActivity {
 
     }
 
-    private void updateUI(FirebaseUser user) {
 
+
+
+
+
+
+
+    public void conectaJSON(View view){
+
+        //meter conexion a web
+
+        Intent intent = new Intent(ConJSON.this, ListaJSON.class);
+        EditText direccionEditText = (EditText) findViewById(R.id.editTextTextPersonName);
+        String direccion = direccionEditText.getText().toString();
+        intent.putExtra("direccion", direccion);
+        startActivity(intent);
     }
-
-
-
-    //este metodo abre la siguiente actividad mediante un intent
-    public void irActivityVisor(View view){
-
-    Intent intent = new Intent(conectaaBBDD.this,PelisListView.class);
-    startActivity(intent);
-
-    }
-
-    public void irActivityJSON(View view){
-        Intent intent4 = new Intent(conectaaBBDD.this,ConJSON.class);
-        startActivity(intent4);
-
-    }
-
-
 }

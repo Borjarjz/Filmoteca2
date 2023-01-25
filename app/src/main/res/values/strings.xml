@@ -6,9 +6,12 @@
     <string name="AcercaDe">Acerca de</string>
     <string name="buscagoogle">Buscar en Google</string>
     <string name="anyadirpeli">Añadir Pelicula</string>
-    <string name="conectarseabbdd">Conectarse a BBDD</string>
-    <string name="estadodeconexion">Conectandose a BBDD...</string>
+    <string name="conectarseabbdd">Conectarse a BBDD FIREBASE</string>
+    <string name="estadodeconexion">Conectandose a BBDD FIREBASE...</string>
+    <string name="conectarseabbdd2">Conectarse a SERVICIO WEB JSON</string>
+    <string name="estadodeconexion2">CONECTARSE A SERV WEB JSON...</string>
     <string name="botonseleccionarpelis">Abrir lista de peliculas</string>
+    <string name="botonseleccionarpelis2">CONECTARSE....</string>
     <string name="conectadoabbdd">Conexion a la BBDD completada</string>
     <string name="noconectadoabbdd">Conexion a la BBDD FALLIDA!</string>
 
@@ -25,6 +28,7 @@
     <string name="mensajeacercade">Esta aplicacion ha sido creada por Borja Rodriguez Para la asignatura prog dirigida por eventos</string>
     <string name="botonguardarnuevapeli">Guardar Pelicula</string>
     <string name="guardarcambios">Guardar Cambios</string>
+    <string name="Direccionalaqueconectar">"Direccion a la que conectarse: "</string>
 
 
 </resources>
