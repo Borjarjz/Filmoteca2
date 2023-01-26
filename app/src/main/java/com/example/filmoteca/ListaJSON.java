@@ -16,6 +16,12 @@ import android.widget.Toast;
 
 import com.squareup.okhttp.ResponseBody;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -23,55 +29,85 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class ListaJSON extends AppCompatActivity {
 
     private ListView listView;
-
+    private ArrayList<Pelicula> listaPeliculas;
+    ArrayAdapter<Pelicula> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_json);
 
         Intent intent = getIntent();
-        String direccion=intent.getStringExtra("direccion");
+       // String direccion=intent.getStringExtra("direccion");
+        String direccion="http://192.168.1.9:8080";
         //Toast.makeText(getApplicationContext(), direccion, Toast.LENGTH_SHORT).show();
 
 
+        listView = (ListView) findViewById(R.id.listView);
+        listaPeliculas = new ArrayList<Pelicula>();
+        adapter= new ArrayAdapter<>(ListaJSON.this, android.R.layout.simple_list_item_1, listaPeliculas);
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(direccion)
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         MyAPI myAPI = retrofit.create(MyAPI.class);
 
-        Call<String> call = myAPI.getData(direccion);
-        call.enqueue(new Callback<String>() {
-                         @Override
-                         public void onResponse(Call<String> call, Response<String> response) {
-                             if (response.isSuccessful()) {
-                                 // Procesa la respuesta
-                             } else {
-                                 // Maneja el error
-                             }
-                         }
 
-                        @Override
-                        public void onFailure(Call<String> call, Throwable t) {
-                            //Maneja el error de conexión
+
+
+        for (int i=0; i<7.; i++){
+
+
+            Call<ResponseBody> call = myAPI.getData(i);
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    Toast.makeText(ListaJSON.this, "hola", Toast.LENGTH_SHORT).show();
+                    if(response.isSuccessful()) {
+                        try {
+                            JSONObject json = new JSONObject(response.body().string());
+
+                            Pelicula pelicula = new Pelicula(json.getString("director"), Integer.parseInt(json.getString("id")), json.getString("clasificacion"), json.getString("nombre"));
+
+                            listaPeliculas.add(pelicula);
+
+
+                            adapter.notifyDataSetChanged();
+                            listView.setAdapter(adapter);
+
+
+                        } catch (JSONException | IOException e) {
+                            e.printStackTrace();
                         }
-                          });
+                    } else {
+                        Toast.makeText(ListaJSON.this, "response no hya", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    // manejar el error
+                }
+            });
+
+           /* if(listaPeliculas.isEmpty()){
+                Toast.makeText(this, "el array esta vacio", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(this, "el array tiene cositas", Toast.LENGTH_SHORT).show();
+            }*/
 
 
-        listView = (ListView) findViewById(R.id.listView);
 
-        //aqui meteremos el data en el
-        /*
-        AdaptadorJSON adaptador = new AdaptadorJSON(this, data);
-        listView.setAdapter(adaptador);
+        }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arraydepelis);
-        listView.setAdapter(adapter);*/
+
+
 
 
     }
