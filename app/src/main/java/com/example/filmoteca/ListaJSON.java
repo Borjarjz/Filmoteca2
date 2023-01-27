@@ -49,7 +49,7 @@ public class ListaJSON extends AppCompatActivity {
 
         Intent intent = getIntent();
        // String direccion=intent.getStringExtra("direccion");
-        String direccion="http://192.168.1.191:8080";
+        String direccion="http://192.168.1.9:8080";
 
 
 
