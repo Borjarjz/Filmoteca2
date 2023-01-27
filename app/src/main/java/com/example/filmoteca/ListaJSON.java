@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -53,9 +54,11 @@ public class ListaJSON extends AppCompatActivity {
 
 
         listView = findViewById(R.id.listView);
+        listView.setOnItemClickListener(onItemClickListener);
         listaPeliculas = new ArrayList<Pelicula>();
 
         adapter = new PeliculaAdapter(this, listaPeliculas);
+
         listView.setAdapter(adapter);
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -64,6 +67,13 @@ public class ListaJSON extends AppCompatActivity {
                 .build();
 
         MyAPI myAPI = retrofit.create(MyAPI.class);
+
+
+
+
+
+
+
 
         for (int i=0; i<7.; i++){
 
@@ -83,6 +93,7 @@ public class ListaJSON extends AppCompatActivity {
                             listaPeliculas.add(pelicula);
                             adapter.notifyDataSetChanged();
                             listView.setAdapter(adapter);
+
                         } catch (IOException e) {
                             e.printStackTrace();
                         } catch (JSONException e) {
@@ -190,7 +201,20 @@ public class ListaJSON extends AppCompatActivity {
     }
 
 
+    private AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+
+            // Aquí va el código que se ejecutará al hacer clic en un elemento de la lista
+            Pelicula peliculaSeleccionada = listaPeliculas.get(position);
+
+            // aqui puedes navegar a otra activity
+            Intent intent2 = new Intent(ListaJSON.this, DetallePelicula.class);
+            intent2.putExtra("peliculaSeleccionada", peliculaSeleccionada);
+            startActivity(intent2);
+        }
+    };
 
 
 

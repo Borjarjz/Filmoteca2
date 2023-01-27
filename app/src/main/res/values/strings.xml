@@ -29,6 +29,11 @@
     <string name="botonguardarnuevapeli">Guardar Pelicula</string>
     <string name="guardarcambios">Guardar Cambios</string>
     <string name="Direccionalaqueconectar">"Direccion a la que conectarse: "</string>
+    <string name="title_activity_detalle_pelicula">DetallePelicula</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

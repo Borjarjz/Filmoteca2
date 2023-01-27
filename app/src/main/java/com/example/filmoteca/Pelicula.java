@@ -2,7 +2,9 @@ package com.example.filmoteca;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Pelicula {
+import java.io.Serializable;
+
+public class Pelicula implements Serializable {
 
     @SerializedName("director")
     private String director;
