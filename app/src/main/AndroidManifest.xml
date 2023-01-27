@@ -33,7 +33,9 @@
 
         <activity
             android:name=".DetallePelicula"
-            android:exported="false">
+            android:exported="false"
+            android:label="@string/title_activity_detalle_pelicula"
+            android:theme="@style/Theme.Filmoteca.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
