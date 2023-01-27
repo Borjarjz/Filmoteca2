@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.filmoteca.ui.main.SectionsPagerAdapter;
 import com.example.filmoteca.databinding.ActivityDetallePelicula2Binding;
@@ -20,9 +22,29 @@ public class DetallePelicula extends AppCompatActivity {
 
     private ActivityDetallePelicula2Binding binding;
 
+    Pelicula pelicula;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+       pelicula = (Pelicula) getIntent().getSerializableExtra("peliculaSeleccionada");
+
+
+
+        Bundle bundle = new Bundle();
+        bundle.putString("nombre", pelicula.getNombre());
+        bundle.putString("clasif", pelicula.getClasificacion());
+        bundle.putString("dir", pelicula.getDirector());
+
+        Info fragment = new Info();
+
+        fragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().add(R.id.view_pager, fragment).commit();
+
+
+
 
         binding = ActivityDetallePelicula2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -32,14 +54,12 @@ public class DetallePelicula extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
-        FloatingActionButton fab = binding.fab;
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
+
+
+
     }
-}
+
+
+    }
