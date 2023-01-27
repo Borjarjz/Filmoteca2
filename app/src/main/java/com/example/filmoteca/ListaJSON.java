@@ -4,27 +4,31 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
-
-import com.squareup.okhttp.ResponseBody;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
+import okhttp3.ResponseBody;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -36,7 +40,7 @@ public class ListaJSON extends AppCompatActivity {
 
     private ListView listView;
     private ArrayList<Pelicula> listaPeliculas;
-    ArrayAdapter<Pelicula> adapter;
+   PeliculaAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,13 +48,15 @@ public class ListaJSON extends AppCompatActivity {
 
         Intent intent = getIntent();
        // String direccion=intent.getStringExtra("direccion");
-        String direccion="http://192.168.1.9:8080";
-        //Toast.makeText(getApplicationContext(), direccion, Toast.LENGTH_SHORT).show();
+        String direccion="http://192.168.1.191:8080";
 
 
-        listView = (ListView) findViewById(R.id.listView);
+
+        listView = findViewById(R.id.listView);
         listaPeliculas = new ArrayList<Pelicula>();
-        adapter= new ArrayAdapter<>(ListaJSON.this, android.R.layout.simple_list_item_1, listaPeliculas);
+
+        adapter = new PeliculaAdapter(this, listaPeliculas);
+        listView.setAdapter(adapter);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(direccion)
@@ -59,31 +65,27 @@ public class ListaJSON extends AppCompatActivity {
 
         MyAPI myAPI = retrofit.create(MyAPI.class);
 
-
-
-
         for (int i=0; i<7.; i++){
 
 
             Call<ResponseBody> call = myAPI.getData(i);
+
             call.enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                    Toast.makeText(ListaJSON.this, "hola", Toast.LENGTH_SHORT).show();
                     if(response.isSuccessful()) {
                         try {
-                            JSONObject json = new JSONObject(response.body().string());
+                            String json = response.body().string();
+                            JSONObject jsonObject = new JSONObject(json);
 
-                            Pelicula pelicula = new Pelicula(json.getString("director"), Integer.parseInt(json.getString("id")), json.getString("clasificacion"), json.getString("nombre"));
+                            Pelicula pelicula = new Pelicula(jsonObject.getString("director"), Integer.parseInt(jsonObject.getString("id")), jsonObject.getString("clasificacion"), jsonObject.getString("nombre"));
 
                             listaPeliculas.add(pelicula);
-
-
                             adapter.notifyDataSetChanged();
                             listView.setAdapter(adapter);
-
-
-                        } catch (JSONException | IOException e) {
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     } else {
@@ -92,18 +94,9 @@ public class ListaJSON extends AppCompatActivity {
                 }
                 @Override
                 public void onFailure(Call<ResponseBody> call, Throwable t) {
-                    // manejar el error
+                    // Toast.makeText(ListaJSON.this, "ha habido un error", Toast.LENGTH_SHORT).show();
                 }
             });
-
-           /* if(listaPeliculas.isEmpty()){
-                Toast.makeText(this, "el array esta vacio", Toast.LENGTH_SHORT).show();
-            }else{
-                Toast.makeText(this, "el array tiene cositas", Toast.LENGTH_SHORT).show();
-            }*/
-
-
-
         }
 
 
@@ -195,4 +188,10 @@ public class ListaJSON extends AppCompatActivity {
         }
 
     }
+
+
+
+
+
+
 }
