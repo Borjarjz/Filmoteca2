@@ -22,8 +22,15 @@ public String nom;
         // Required empty public constructor
     }
 
-
-
+    public static Info newInstance(String nombre, String clasificacion, String director) {
+        Info fragment = new Info();
+        Bundle args = new Bundle();
+        args.putString("nombre", nombre);
+        args.putString("clasif", clasificacion);
+        args.putString("dir", director);
+        fragment.setArguments(args);
+        return fragment;
+    }
 
 
     @Override
@@ -49,14 +56,14 @@ public String nom;
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_info, container, false);
-
+/*
         TextView textView11 = view.findViewById(R.id.textView11);
         TextView textView12 = view.findViewById(R.id.textView12);
         TextView textView13 = view.findViewById(R.id.textView13);
 
         textView11.setText(nom);
         textView12.setText(clas);
-        textView13.setText(dir);
+        textView13.setText(dir);*/
 
         return view;
     }
