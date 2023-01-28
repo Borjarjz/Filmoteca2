@@ -1,6 +1,9 @@
 package com.example.filmoteca;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -67,5 +70,10 @@ public class DetallePelicula extends AppCompatActivity {
 
     }
 
-
+    public void imdb(View view) {
+        String query = pelicula.getNombre();
+        String url = "https://www.imdb.com/find?q=" + query + "&s=all";
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(intent);
+    }
     }
