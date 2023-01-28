@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 
 public class Info extends Fragment {
-    public Pelicula pelicula;
+  //  public Pelicula pelicula;
 public String nom;
     public String clas;
     public String dir;
@@ -38,10 +38,12 @@ public String nom;
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
 
-            pelicula = (Pelicula) getArguments().getSerializable("peliculaSeleccionada");
+            //pelicula = (Pelicula) getArguments().getSerializable("peliculaSeleccionada");
             nom=(String) getArguments().getString("nombre");
             clas=(String) getArguments().getString("clasif");
             dir=(String) getArguments().getString("dir");
+
+
 
         }else  {
 
@@ -56,14 +58,15 @@ public String nom;
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_info, container, false);
-/*
+
         TextView textView11 = view.findViewById(R.id.textView11);
         TextView textView12 = view.findViewById(R.id.textView12);
         TextView textView13 = view.findViewById(R.id.textView13);
 
         textView11.setText(nom);
         textView12.setText(clas);
-        textView13.setText(dir);*/
+        textView13.setText(dir);
+
 
         return view;
     }

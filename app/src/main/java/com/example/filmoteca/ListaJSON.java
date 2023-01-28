@@ -48,8 +48,8 @@ public class ListaJSON extends AppCompatActivity {
         setContentView(R.layout.activity_lista_json);
 
         Intent intent = getIntent();
-       // String direccion=intent.getStringExtra("direccion");
-        String direccion="http://192.168.1.9:8080";
+        String direccion="http://"+intent.getStringExtra("direccion");
+        //String direccion="http://192.168.1.9:8080";
 
 
 
